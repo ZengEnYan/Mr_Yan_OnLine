@@ -1,4 +1,4 @@
-package com.Mr_Yan_OnLine.test.user_fragment;
+package com.Mr_Yan_OnLine.test.user;
 
 
 import android.os.Bundle;

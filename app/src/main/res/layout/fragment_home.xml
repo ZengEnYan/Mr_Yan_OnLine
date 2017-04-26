@@ -1,13 +1,34 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.Mr_Yan_OnLine.test.home_fragment.HomeFragment">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.Mr_Yan_OnLine.test.home.fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <include
+        android:id="@+id/titlebar"
+        layout="@layout/titilebar"/>
+
+    <!-- 注意:RecyclerView是Android5.0的新特性,故使用时要在Gradle文件进行关联,否则报错-->
+    <!--compile 'com.android.support:recyclerview-v7:25.0.1'',注意25.0.1是根据你gradle版本进行修改的-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_below="@id/titlebar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:layout_height="wrap_content"/>
 
-</FrameLayout>
+    <ImageButton
+        android:id="@+id/ib_top"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="21dp"
+        android:background="@drawable/ib_top"
+        android:visibility="visible"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="21dp"/>
+
+</RelativeLayout>

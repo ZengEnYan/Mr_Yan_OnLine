@@ -1,4 +1,4 @@
-package com.Mr_Yan_OnLine.test.community_fragment;
+package com.Mr_Yan_OnLine.test.type.fragment;
 
 
 import android.os.Bundle;
@@ -13,19 +13,19 @@ import com.Mr_Yan_OnLine.test.base.BaseFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CommunityFragment extends BaseFragment {
+public class TypeFragment extends BaseFragment{
 
     private TextView mTextView;
 
     @Override
     public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         mTextView = new TextView(mContext);
         return mTextView;
     }
 
     @Override
     public void initData() {
-        mTextView.setText("发现页面的Fragment");
+        mTextView.setText("分类页面的Fragment");
     }
+
 }

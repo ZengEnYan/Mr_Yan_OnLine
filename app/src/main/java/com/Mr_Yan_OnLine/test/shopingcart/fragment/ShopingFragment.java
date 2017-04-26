@@ -1,4 +1,4 @@
-package com.Mr_Yan_OnLine.test.type_fragment;
+package com.Mr_Yan_OnLine.test.shopingcart.fragment;
 
 
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import com.Mr_Yan_OnLine.test.base.BaseFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TypeFragment extends BaseFragment{
+public class ShopingFragment extends BaseFragment {
 
     private TextView mTextView;
 
@@ -25,7 +25,6 @@ public class TypeFragment extends BaseFragment{
 
     @Override
     public void initData() {
-        mTextView.setText("分类页面的Fragment");
+        mTextView.setText("购物车页面的Fragment");
     }
-
 }

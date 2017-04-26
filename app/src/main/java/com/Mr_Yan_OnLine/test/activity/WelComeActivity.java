@@ -32,7 +32,7 @@ public class WelComeActivity extends AppCompatActivity {
                 //跳转到Activity的方法
                 JumpMainActivity();
             }
-        },3000);
+        },2000);
     }
     //跳转的方法(Ctrl+alt+m自动生成方法)
     private void JumpMainActivity() {

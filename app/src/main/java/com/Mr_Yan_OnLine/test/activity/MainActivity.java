@@ -16,11 +16,11 @@ import android.widget.Toast;
 
 import com.Mr_Yan_OnLine.test.R;
 import com.Mr_Yan_OnLine.test.base.BaseFragment;
-import com.Mr_Yan_OnLine.test.community_fragment.CommunityFragment;
-import com.Mr_Yan_OnLine.test.home_fragment.HomeFragment;
-import com.Mr_Yan_OnLine.test.shopingcart_fragment.ShopingFragment;
-import com.Mr_Yan_OnLine.test.type_fragment.TypeFragment;
-import com.Mr_Yan_OnLine.test.user_fragment.UserFragment;
+import com.Mr_Yan_OnLine.test.community.fragment.CommunityFragment;
+import com.Mr_Yan_OnLine.test.home.fragment.HomeFragment;
+import com.Mr_Yan_OnLine.test.shopingcart.fragment.ShopingFragment;
+import com.Mr_Yan_OnLine.test.type.fragment.TypeFragment;
+import com.Mr_Yan_OnLine.test.user.UserFragment;
 
 import java.util.ArrayList;
 import java.util.List;
