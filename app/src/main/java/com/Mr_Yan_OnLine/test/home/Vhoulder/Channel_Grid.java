@@ -6,7 +6,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.Mr_Yan_OnLine.test.R;
-import com.Mr_Yan_OnLine.test.home.adapter.ChannelAdapter;
+import com.Mr_Yan_OnLine.test.home.adapter.channel_adapter.ChannelAdapter;
 import com.Mr_Yan_OnLine.test.home.bean.ResultBeanData;
 
 /**

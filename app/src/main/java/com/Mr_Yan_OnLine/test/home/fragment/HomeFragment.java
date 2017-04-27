@@ -1,8 +1,12 @@
 package com.Mr_Yan_OnLine.test.home.fragment;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -27,7 +31,7 @@ import okhttp3.Call;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
     private static final String TAG = HomeFragment.class.getSimpleName();
     private TextView mTextView;
     private View mView;
@@ -37,6 +41,13 @@ public class HomeFragment extends BaseFragment {
     private ImageButton mIb_top;
     private ResultBeanData.ResultBean mResultBean;
     private HomeRVAdapter mHomeRVAdapter;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+    Handler handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+
+            }
+        };
 
     @Override
     public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,6 +56,7 @@ public class HomeFragment extends BaseFragment {
         mIb_top = (ImageButton) mView.findViewById(R.id.ib_top);
         mTv_search_home = (TextView) mView.findViewById(R.id.tv_search_home);
         mTv_message_home = (TextView) mView.findViewById(R.id.tv_message_home);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) mView.findViewById(R.id.swipeRefreshLayout);
 
         //设置点击事件
         initListener();
@@ -89,6 +101,8 @@ public class HomeFragment extends BaseFragment {
     public void initData() {
         //使用okhttp工具类get请求网络
         OKhttpGETData();
+        mSwipeRefreshLayout.setColorSchemeColors(Color.RED,Color.BLUE,Color.CYAN,Color.YELLOW);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
     }
 
     //使用okhttp工具类get请求网络
@@ -138,5 +152,17 @@ public class HomeFragment extends BaseFragment {
             //成功后的吐丝
             Toast.makeText(mContext, "没有数据,不能展示", Toast.LENGTH_SHORT).show();
         }
+    }
+    /*下拉刷新  刷新适配器*/
+    @Override
+    public void onRefresh() {
+        handler.postDelayed(new  Runnable() {
+            @Override
+            public void run() {
+              /*刷新适配器*/
+                initData();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        },2000);
     }
 }

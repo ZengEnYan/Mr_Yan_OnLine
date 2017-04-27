@@ -7,8 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.Mr_Yan_OnLine.test.R;
+import com.Mr_Yan_OnLine.test.home.Vhoulder.ACT_ViewPager;
 import com.Mr_Yan_OnLine.test.home.Vhoulder.BannerViewHoulder;
 import com.Mr_Yan_OnLine.test.home.Vhoulder.Channel_Grid;
+import com.Mr_Yan_OnLine.test.home.Vhoulder.SeckillViewHoulder;
 import com.Mr_Yan_OnLine.test.home.bean.ResultBeanData;
 
 /**
@@ -50,20 +52,31 @@ public class HomeRVAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RecyclerView.ViewHolder viewHolder = null;;
-        switch (currentType){
+        RecyclerView.ViewHolder viewHolder = null;
+        ;
+        switch (currentType) {
             case 0:
                 /*无限轮播*/
                 View banner_ViewPager = LayoutInflater.from(context).inflate(R.layout.banner_viewpager, parent, false);
                 viewHolder = new BannerViewHoulder(banner_ViewPager);
                 break;
             case 1:
+                /*频道类型*/
                 View channel_RV = LayoutInflater.from(context).inflate(R.layout.channel_grid, parent, false);
                 viewHolder = new Channel_Grid(channel_RV);
+                break;
+            case 2:
+                View act_viewPager = LayoutInflater.from(context).inflate(R.layout.act_viewpager, parent, false);
+                viewHolder = new ACT_ViewPager(act_viewPager);
+                break;
+            case 3:
+                View seckill = LayoutInflater.from(context).inflate(R.layout.seckill, parent, false);
+                viewHolder = new SeckillViewHoulder(seckill);
                 break;
         }
         return viewHolder;
     }
+
     @Override
     public int getItemViewType(int position) {
         /*切记给currentType赋值*/
@@ -75,15 +88,15 @@ public class HomeRVAdapter extends RecyclerView.Adapter {
             /*频道类型*/
             case CHANNEL:
                 currentType = CHANNEL;
-//                break;
-//            /*活动类型*/
-//            case ACT:
-//                currentType = ACT;
-//                break;
-//            /*秒杀类型*/
-//            case SECKILL:
-//                currentType = SECKILL;
-//                break;
+                break;
+            /*活动类型*/
+            case ACT:
+                currentType = ACT;
+                break;
+            /*秒杀类型*/
+            case SECKILL:
+                currentType = SECKILL;
+                break;
 //            /*推荐类型*/
 //            case RECOMMEND:
 //                currentType = RECOMMEND;
@@ -96,24 +109,36 @@ public class HomeRVAdapter extends RecyclerView.Adapter {
 
         return currentType;
     }
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        switch (position){
+        switch (position) {
             /*banner无限轮播*/
             case 0:
                 BannerViewHoulder bannerViewHoulder = (BannerViewHoulder) holder;
-                bannerViewHoulder.setData(context,resultBean);
+                bannerViewHoulder.setData(context, resultBean);
                 break;
             /*频道类型*/
             case 1:
                 Channel_Grid channelGrid = (Channel_Grid) holder;
-                channelGrid.setData(context,resultBean);
+                channelGrid.setData(context, resultBean);
+                break;
+            /*活动类型*/
+            case 2:
+                ACT_ViewPager act_ViewPager = (ACT_ViewPager) holder;
+                act_ViewPager.setData(context, resultBean);
+                break;
+            /*秒杀类型*/
+            case 3:
+                SeckillViewHoulder seckillViewHoulder = (SeckillViewHoulder) holder;
+                seckillViewHoulder.setData(context, resultBean);
                 break;
         }
     }
+
     /*返回的条目数*/
     @Override
     public int getItemCount() {
-        return 2;
+        return 4;
     }
 }

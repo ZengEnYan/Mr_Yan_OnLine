@@ -11,6 +11,7 @@ import com.Mr_Yan_OnLine.test.home.bean.ResultBeanData;
 import com.Mr_Yan_OnLine.test.utils.Constants;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,8 @@ public class BannerViewHoulder extends RecyclerView.ViewHolder {
 
         //无限轮播
         mBanner.setIndicatorGravity(BannerConfig.RIGHT);
+        //设置banner动画效果
+        mBanner.setBannerAnimation(Transformer.ScaleInOut);
         mBanner.setImages(imageList).setImageLoader(new GlideImageLoader()).start();
     }
 }

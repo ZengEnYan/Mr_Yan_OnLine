@@ -1,4 +1,4 @@
-package com.Mr_Yan_OnLine.test.home.adapter;
+package com.Mr_Yan_OnLine.test.home.adapter.channel_adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -6,9 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.Mr_Yan_OnLine.test.R;
-import com.Mr_Yan_OnLine.test.home.Vhoulder.Channel_RV_Item;
+import com.Mr_Yan_OnLine.test.clicklistener.OnRecyclerViewItemClickListener;
+import com.Mr_Yan_OnLine.test.home.Vhoulder.channel_item.Channel_RV_Item;
 import com.Mr_Yan_OnLine.test.home.bean.ResultBeanData;
 import com.Mr_Yan_OnLine.test.utils.Constants;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -25,6 +27,7 @@ public class ChannelAdapter extends RecyclerView.Adapter<Channel_RV_Item> {
     Context context;
     ResultBeanData.ResultBean resultBean;
     private final DisplayImageOptions mOptions;
+    OnRecyclerViewItemClickListener onItemClickListener;
 
     public ChannelAdapter(Context context, ResultBeanData.ResultBean resultBean) {
         this.context = context;
@@ -50,12 +53,24 @@ public class ChannelAdapter extends RecyclerView.Adapter<Channel_RV_Item> {
         return channelRvItem;
     }
 
-    @Override
-    public void onBindViewHolder(Channel_RV_Item holder, int position) {
-        ImageLoader.getInstance().displayImage(Constants.BASE_URL_IMAGE+resultBean.getChannel_info().get(position).getImage(),holder.mIv_channel,mOptions);
-        holder.mTv_channel.setText(resultBean.getChannel_info().get(position).getChannel_name());
+    public void setOnItemClickListener(OnRecyclerViewItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
     }
 
+    /*设置数据*/
+    @Override
+    public void onBindViewHolder(Channel_RV_Item holder, final int position) {
+        ImageLoader.getInstance().displayImage(Constants.BASE_URL_IMAGE+resultBean.getChannel_info().get(position).getImage(),holder.mIv_channel,mOptions);
+        holder.mTv_channel.setText(resultBean.getChannel_info().get(position).getChannel_name());
+        holder.mChannel_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //成功后的吐丝
+                Toast.makeText(context, "点击:"+resultBean.getChannel_info().get(position).getChannel_name(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    /*返回条目数*/
     @Override
     public int getItemCount() {
         return resultBean.getChannel_info().size();
