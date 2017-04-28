@@ -10,6 +10,8 @@ import com.Mr_Yan_OnLine.test.R;
 import com.Mr_Yan_OnLine.test.home.Vhoulder.ACT_ViewPager;
 import com.Mr_Yan_OnLine.test.home.Vhoulder.BannerViewHoulder;
 import com.Mr_Yan_OnLine.test.home.Vhoulder.Channel_Grid;
+import com.Mr_Yan_OnLine.test.home.Vhoulder.Hot_Grid;
+import com.Mr_Yan_OnLine.test.home.Vhoulder.Recommend_Grid;
 import com.Mr_Yan_OnLine.test.home.Vhoulder.SeckillViewHoulder;
 import com.Mr_Yan_OnLine.test.home.bean.ResultBeanData;
 
@@ -73,6 +75,14 @@ public class HomeRVAdapter extends RecyclerView.Adapter {
                 View seckill = LayoutInflater.from(context).inflate(R.layout.seckill, parent, false);
                 viewHolder = new SeckillViewHoulder(seckill);
                 break;
+            case 4:
+                View recommend_grid = LayoutInflater.from(context).inflate(R.layout.recommend_grid, parent, false);
+                viewHolder = new Recommend_Grid(recommend_grid);
+                break;
+            case 5:
+                View hot_Grid = LayoutInflater.from(context).inflate(R.layout.hot_grid, parent, false);
+                viewHolder = new Hot_Grid(hot_Grid);
+                break;
         }
         return viewHolder;
     }
@@ -97,14 +107,14 @@ public class HomeRVAdapter extends RecyclerView.Adapter {
             case SECKILL:
                 currentType = SECKILL;
                 break;
-//            /*推荐类型*/
-//            case RECOMMEND:
-//                currentType = RECOMMEND;
-//                break;
-//            /*热销类型*/
-//            case HOT:
-//                currentType = HOT;
-//                break;
+            /*推荐类型*/
+            case RECOMMEND:
+                currentType = RECOMMEND;
+                break;
+            /*热销类型*/
+            case HOT:
+                currentType = HOT;
+                break;
         }
 
         return currentType;
@@ -133,12 +143,21 @@ public class HomeRVAdapter extends RecyclerView.Adapter {
                 SeckillViewHoulder seckillViewHoulder = (SeckillViewHoulder) holder;
                 seckillViewHoulder.setData(context, resultBean);
                 break;
+            /*推荐类型*/
+            case 4:
+                Recommend_Grid recommend_Grid = (Recommend_Grid) holder;
+                recommend_Grid.setData(context,resultBean);
+                break;
+            case 5:
+                Hot_Grid hotGrid = (Hot_Grid) holder;
+                hotGrid.setData(context,resultBean);
+                break;
         }
     }
 
     /*返回的条目数*/
     @Override
     public int getItemCount() {
-        return 4;
+        return 6;
     }
 }

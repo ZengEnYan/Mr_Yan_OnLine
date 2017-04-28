@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.Mr_Yan_OnLine.test.R;
 import com.Mr_Yan_OnLine.test.home.adapter.seckill_adapter.Seckill_Adapter;
@@ -58,7 +59,7 @@ public class SeckillViewHoulder extends RecyclerView.ViewHolder {
         mRv_seckill.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
     }
 
-    public void setData(Context context, ResultBeanData.ResultBean resultBean) {
+    public void setData(final Context context, ResultBeanData.ResultBean resultBean) {
         this.context = context;
         this.resultBean = resultBean;
         //E2.计算秒杀倒计时,应为从bean集合里,拿到的时间数据不是int型,所以用Integer进行转换(其逻辑代码就是java基础的内容)
@@ -66,5 +67,12 @@ public class SeckillViewHoulder extends RecyclerView.ViewHolder {
         //E2.建立handler实现定时器的效果,循环发送消息,以便能够使时间不断减一
         handler.sendEmptyMessageDelayed(0,1000);
         mRv_seckill.setAdapter(new Seckill_Adapter(context,resultBean));
+        mTv_more_seclill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //成功后的吐丝
+                Toast.makeText(context, "点击了:"+"查看更多", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
