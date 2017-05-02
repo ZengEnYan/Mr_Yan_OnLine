@@ -1,16 +1,17 @@
 package com.Mr_Yan_OnLine.test.home.Vhoulder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.Mr_Yan_OnLine.test.R;
 import com.Mr_Yan_OnLine.test.home.bean.ResultBeanData;
+import com.Mr_Yan_OnLine.test.ui_xiangqing.ActWebViewsActivity;
 import com.Mr_Yan_OnLine.test.utils.Constants;
 import com.bumptech.glide.Glide;
 
@@ -75,8 +76,10 @@ public class ACT_ViewPager extends RecyclerView.ViewHolder {
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //成功后的吐丝
-                    Toast.makeText(context, "点击了:"+position, Toast.LENGTH_SHORT).show();
+                    /*intent 传值  WebView页*/
+                    Intent intent = new Intent(context, ActWebViewsActivity.class);
+                    intent.putExtra("actImg",Constants.BASE_URL_IMAGE+resultBean.getAct_info().get(position).getUrl());
+                    context.startActivity(intent);
                 }
             });
             /*最后记得添加View*/

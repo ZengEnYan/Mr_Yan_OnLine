@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.Mr_Yan_OnLine.test">
-    <!--联网权限-->
+
+    <!-- 联网权限 -->
     <uses-permission android:name="android.permission.INTERNET"/>
-    <!--Banner无限轮播权限 可读权限-->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- Banner无限轮播权限 可读权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".application.OnLineApplication"
@@ -25,6 +26,12 @@
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".ui_xiangqing.ShopXiangQingActivity"
+                  android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".ui_xiangqing.ActWebViewsActivity"
+                  android:screenOrientation="portrait">
         </activity>
     </application>
 

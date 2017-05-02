@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -146,7 +146,25 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             //实例化recycler适配器
             mHomeRVAdapter = new HomeRVAdapter(mContext, mResultBean);
             //设置布局管理者,
-            mRvHome.setLayoutManager(new LinearLayoutManager(mContext));
+            //提示:使用recycleView设置完适配器,还要设置布局管理者,决定RecycleView的整体面貌   参数:1上下文 2决定面貌为一行
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 1);
+            //C.设置跨度大小的监听
+            gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    //如果没有向下滑动,隐藏右边可以一下子弹到最上面的按钮
+                    if(position<=3){
+                        //注意:XML布局中也要让控件隐藏一下
+                        mIb_top.setVisibility(View.GONE);
+                    }else {
+                        //如果向下滑动的距离超过3个item,就显示按钮
+                        mIb_top.setVisibility(View.VISIBLE);
+                    }
+                    //此处只能返回1.
+                    return 1;
+                }
+            });
+            mRvHome.setLayoutManager(gridLayoutManager);
             mRvHome.setAdapter(mHomeRVAdapter);
         }else {
             //成功后的吐丝

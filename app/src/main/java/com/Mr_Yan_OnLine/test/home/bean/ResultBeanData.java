@@ -7,7 +7,7 @@ import java.util.List;
  * Data: 2017/4/25
  * 备注
  */
-public class ResultBeanData {
+public class ResultBeanData  {
 
     /**
      * code : 200
