@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#e6e6e6"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_margin="10dp"
+            android:id="@+id/goodsImage"
+            android:layout_width="120dp"
+            android:layout_height="120dp"/>
+
+        <LinearLayout
+            android:layout_marginTop="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/goodsPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_margin="10dp"
+                android:textColor="#e55555"/>
+
+            <TextView
+                android:id="@+id/goodsShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_margin="10dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/addCar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#e55555"
+        android:text="确定"
+        android:textSize="22sp"
+        android:textColor="#ffffff"/>
+
+</LinearLayout>
